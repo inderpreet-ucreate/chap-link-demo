@@ -15,7 +15,7 @@
             var currentTime = new Date();
             var currentYear = currentTime.getFullYear();
             var tenYearPast = (currentYear-10).toString();
-            var endRange = (currentYear+1).toString();
+            var endRange = (currentYear+5).toString();
             var defaultEra = new Date(1900, 0, 1);
             var timeline;
             var fullRange = [tenYearPast,
@@ -88,7 +88,6 @@
                     // eventMarginAxis: 10,
                     style: "dot",
                     //cluster: true,
-                    max: new Date(endRange,11,31),
                     min: new Date(-271820, 0, 1),
                     autoResize: true
                 };
@@ -106,7 +105,7 @@
                 startRange = defaultEra;
                 timeline.setVisibleChartRange(startRange, endRange);
             }
-            window.onload = function(){ 
+            window.onload = function(){
                 document.getElementById("out").onclick = function(){
                     if (currentIndex <= 5) {
                         var newIndex = currentIndex + 1;
