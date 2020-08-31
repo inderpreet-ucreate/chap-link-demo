@@ -12,8 +12,55 @@
         <link rel="stylesheet" type="text/css" href="./timeline.css">
     
         <script type="text/javascript">
+            var currentTime = new Date();
+            var currentYear = currentTime.getFullYear();
+            var tenYearPast = (currentYear-10).toString();
+            var endRange = (currentYear+1).toString();
+            var defaultEra = new Date(1900, 0, 1);
             var timeline;
-    
+            var fullRange = [tenYearPast,
+                defaultEra,
+                new Date(1400, 0, 1),
+                '0000',
+                new Date(-3000, 0, 1),
+                new Date(-200000, 0, 1),
+                new Date(-271820, 0, 1)
+                // new Date(-3000000000, 0, 1),
+                // new Date(-4550000000, 0, 1),
+                // new Date(-13800000000, 0, 1)
+                ];
+            var currentIndex = 1;
+            var startRange;
+
+            var inputData = "[{\"userName\":\"Bikram Saini\",\"title\":\"Taj Mahal\",\"updatedAt\":\"2020-07-29T16:34:23.376+0530\",\"userId\":\"IB3NU5UJv462rxFCpVLS\",\"date\":{\"UserID\":\"IB3NU5UJv462rxFCpVLS\",\"createdAt\":\"2020-07-29T16:33:37.785+0530\",\"isCreatedByOther\":false,\"endDate\":\"29-07-2020\",\"updatedAt\":\"2020-07-29T16:34:23.376+0530\",\"startDate_BC\":\"\",\"flagByUserName\":\"\",\"flagComment\":\"\",\"score\":0,\"flag\":\"\",\"flagByUserId\":\"\",\"UserName\":\"Bikram Saini\",\"endDateType\":3,\"startDateType\":3,\"startDate\":\"29-07-2020\",\"isBC\":false,\"isBan\":false,\"endDate_BC\":\"\",\"derivedFromId\":\"\"},\"createdAt\":\"2020-07-29T16:33:37.785+0530\",\"filter\":{\"subject\":[],\"source\":[],\"keyword\":[],\"sortBy\":0,\"category\":[],\"viewBy\":0},\"id\":\"XVs2zxtFOPfSJGs6pkbz\"},{\"userName\":\"Bikram Saini\",\"updatedAt\":\"2020-07-10T10:26:21.354+0530\",\"filter\":{},\"userId\":\"xZlpFQy3NAuj1vDMytBS\",\"id\":\"6TwTo8M9lQHmJRxI866y\",\"createdAt\":\"2020-07-10T10:21:50.385+0530\",\"title\":\"Mayotte Volcano\",\"date\":{\"flagByUserName\":\"\",\"endDate_BC\":\"\",\"createdAt\":\"2020-07-10T10:26:21.354+0530\",\"isBan\":false,\"UserName\":\"Bikram Saini\",\"startDate\":\"11-2018\",\"updatedAt\":\"2020-07-10T10:26:21.354+0530\",\"flagComment\":\"\",\"flag\":\"\",\"UserID\":\"xZlpFQy3NAuj1vDMytBS\",\"startDateType\":2,\"endDate\":\"\",\"flagByUserId\":\"\",\"derivedFromId\":\"ieUpOQI4wr4LaTWhGdE8\",\"score\":0,\"isCreatedByOther\":false,\"endDateType\":0,\"isBC\":false,\"startDate_BC\":\"\"}},{\"title\":\"Mayotte Volcano\",\"id\":\"dPoLfi3MVqegHU4CGIu5\",\"filter\":{},\"userId\":\"ieUpOQI4wr4LaTWhGdE8\",\"date\":{\"flagByUserId\":\"\",\"derivedFromId\":\"ql1O5xpFmUAxqDFG9QD4\",\"isBC\":false,\"createdAt\":\"2020-07-10T10:26:23.888+0530\",\"score\":1,\"endDateType\":0,\"startDate_BC\":\"\",\"UserName\":\"joe\",\"flagComment\":\"\",\"startDate\":\"11-2018\",\"isBan\":false,\"endDate_BC\":\"\",\"flag\":\"\",\"isCreatedByOther\":false,\"flagByUserName\":\"\",\"UserID\":\"ieUpOQI4wr4LaTWhGdE8\",\"updatedAt\":\"2020-07-10T10:26:23.888+0530\",\"startDateType\":2,\"endDate\":\"\"},\"createdAt\":\"2020-07-03T19:57:43.490+0530\",\"updatedAt\":\"2020-07-10T10:26:23.888+0530\",\"cover\":{\"url\":\"https:\\/\\/firebasestorage.googleapis.com\\/v0\\/b\\/polybook-staging.appspot.com\\/o\\/version%2F1%2Fnote%2FfzxXmAfGolz272UX51lW%2Fcover%2F1592387592404?alt=media&token=fe2d2ec6-7469-49c4-8c3f-b2663ebfa914\",\"name\":\"1592387592404\"},\"userName\":\"joe\"},{\"userName\":\"leo white\",\"filter\":{},\"createdAt\":\"2020-07-20T12:46:02.905+0530\",\"date\":{\"score\":0,\"isBC\":false,\"flagByUserName\":\"\",\"derivedFromId\":\"ql1O5xpFmUAxqDFG9QD4\",\"flagComment\":\"\",\"endDate\":\"\",\"startDateType\":2,\"UserID\":\"nUgveMvZDdQK6Oq18mqh\",\"endDateType\":0,\"isBan\":false,\"isCreatedByOther\":false,\"UserName\":\"leo white\",\"flagByUserId\":\"\",\"flag\":\"\",\"startDate\":\"11-2018\",\"endDate_BC\":\"\",\"startDate_BC\":\"\",\"createdAt\":\"2020-07-20T12:46:02.905+0530\",\"updatedAt\":\"2020-07-20T12:46:02.905+0530\"},\"userId\":\"nUgveMvZDdQK6Oq18mqh\",\"id\":\"jrsEdNrEgKfaJ6F1nW33\",\"cover\":{\"name\":\"1592387592404\",\"url\":\"https:\\/\\/firebasestorage.googleapis.com\\/v0\\/b\\/polybook-staging.appspot.com\\/o\\/version%2F1%2Fnote%2FfzxXmAfGolz272UX51lW%2Fcover%2F1592387592404?alt=media&token=fe2d2ec6-7469-49c4-8c3f-b2663ebfa914\"},\"updatedAt\":\"2020-07-20T12:46:02.905+0530\",\"title\":\"Mayotte Volcano\"},{\"cover\":{\"name\":\"1592387399858\",\"url\":\"https:\\/\\/firebasestorage.googleapis.com\\/v0\\/b\\/polybook-staging.appspot.com\\/o\\/version%2F1%2Fnote%2F2wn2bBarF7A8BOL7bXDM%2Fcover%2F1592387399858?alt=media&token=3a8878a7-74b7-478f-93d1-1dada3af519a\"},\"date\":{\"flagComment\":\"\",\"isBan\":false,\"endDate\":\"\",\"endDate_BC\":\"\",\"flag\":\"\",\"startDateType\":1,\"flagByUserName\":\"\",\"UserID\":\"ieUpOQI4wr4LaTWhGdE8\",\"createdAt\":\"2020-07-03T19:57:43.380+0530\",\"derivedFromId\":\"zAXYB0m8vKWZu5A8KGSO\",\"flagByUserId\":\"\",\"UserName\":\"joe\",\"isBC\":false,\"startDate_BC\":\"\",\"score\":0,\"isCreatedByOther\":false,\"startDate\":\"1995\",\"endDateType\":0,\"updatedAt\":\"2020-07-03T19:57:43.380+0530\"},\"filter\":{},\"title\":\"Houtouwan\",\"id\":\"I06smTkFMjAAI9sj1TBs\",\"userName\":\"joe\",\"updatedAt\":\"2020-07-03T19:57:43.380+0530\",\"createdAt\":\"2020-07-03T19:57:43.380+0530\",\"userId\":\"ieUpOQI4wr4LaTWhGdE8\"},{\"date\":{\"flagByUserId\":\"\",\"startDateType\":1,\"UserName\":\"leo white\",\"isBC\":false,\"endDate\":\"\",\"endDate_BC\":\"\",\"score\":0,\"flag\":\"\",\"isBan\":false,\"endDateType\":0,\"createdAt\":\"2020-07-20T12:46:02.811+0530\",\"startDate\":\"1995\",\"flagByUserName\":\"\",\"startDate_BC\":\"\",\"derivedFromId\":\"zAXYB0m8vKWZu5A8KGSO\",\"flagComment\":\"\",\"updatedAt\":\"2020-07-20T12:46:02.811+0530\",\"UserID\":\"nUgveMvZDdQK6Oq18mqh\",\"isCreatedByOther\":false},\"title\":\"Houtouwan\",\"updatedAt\":\"2020-07-20T12:46:02.811+0530\",\"cover\":{\"name\":\"1592387399858\",\"url\":\"https:\\/\\/firebasestorage.googleapis.com\\/v0\\/b\\/polybook-staging.appspot.com\\/o\\/version%2F1%2Fnote%2F2wn2bBarF7A8BOL7bXDM%2Fcover%2F1592387399858?alt=media&token=3a8878a7-74b7-478f-93d1-1dada3af519a\"},\"userId\":\"nUgveMvZDdQK6Oq18mqh\",\"id\":\"Rg7swSZuiWbmMIlVcJuF\",\"filter\":{},\"createdAt\":\"2020-07-20T12:46:02.811+0530\",\"userName\":\"leo white\"},{\"title\":\"CRISPR Gnome Editing\",\"userId\":\"ieUpOQI4wr4LaTWhGdE8\",\"date\":{\"startDate\":\"2012\",\"startDateType\":1,\"UserID\":\"ieUpOQI4wr4LaTWhGdE8\",\"score\":0,\"derivedFromId\":\"ql1O5xpFmUAxqDFG9QD4\",\"flag\":\"\",\"flagByUserName\":\"\",\"endDate_BC\":\"\",\"flagByUserId\":\"\",\"updatedAt\":\"2020-07-03T19:57:43.598+0530\",\"UserName\":\"joe\",\"isBan\":false,\"flagComment\":\"\",\"endDate\":\"\",\"endDateType\":0,\"isCreatedByOther\":false,\"startDate_BC\":\"\",\"createdAt\":\"2020-07-03T19:57:43.598+0530\",\"isBC\":false},\"updatedAt\":\"2020-07-03T19:57:43.598+0530\",\"createdAt\":\"2020-07-03T19:57:43.598+0530\",\"filter\":{},\"id\":\"1zriJQOMWXyhzJOuKdzV\",\"userName\":\"joe\",\"cover\":{\"name\":\"1592461056305\",\"url\":\"https:\\/\\/firebasestorage.googleapis.com\\/v0\\/b\\/polybook-staging.appspot.com\\/o\\/version%2F1%2Fnote%2FvoUfQ6eeTpShWEA8JKDN%2Fcover%2F1592461056305?alt=media&token=a341cedb-45d9-4bac-8c5e-c467bd2a078e\"}},{\"cover\":{\"name\":\"1592461056305\",\"url\":\"https:\\/\\/firebasestorage.googleapis.com\\/v0\\/b\\/polybook-staging.appspot.com\\/o\\/version%2F1%2Fnote%2FvoUfQ6eeTpShWEA8JKDN%2Fcover%2F1592461056305?alt=media&token=a341cedb-45d9-4bac-8c5e-c467bd2a078e\"},\"updatedAt\":\"2020-07-20T12:46:02.997+0530\",\"title\":\"CRISPR Gnome Editing\",\"filter\":{},\"date\":{\"score\":0,\"startDate_BC\":\"\",\"startDateType\":1,\"derivedFromId\":\"ql1O5xpFmUAxqDFG9QD4\",\"isCreatedByOther\":false,\"startDate\":\"2012\",\"endDateType\":0,\"isBC\":false,\"flagComment\":\"\",\"endDate_BC\":\"\",\"UserID\":\"nUgveMvZDdQK6Oq18mqh\",\"createdAt\":\"2020-07-20T12:46:02.997+0530\",\"UserName\":\"leo white\",\"updatedAt\":\"2020-07-20T12:46:02.997+0530\",\"flagByUserId\":\"\",\"isBan\":false,\"endDate\":\"\",\"flag\":\"\",\"flagByUserName\":\"\"},\"userName\":\"leo white\",\"id\":\"HeS0m2nYiDlGaca5T89v\",\"createdAt\":\"2020-07-20T12:46:02.997+0530\",\"userId\":\"nUgveMvZDdQK6Oq18mqh\"},{\"filter\":{},\"id\":\"AL9X6fjz4yGnDIlKtuow\",\"userName\":\"Reviewer\",\"userId\":\"IFvh9NBLezDQMw7slX5U\",\"date\":{\"derivedFromId\":\"RVjUPKXTXEVo0ZyBpirm\",\"isBan\":false,\"flagByUserName\":\"\",\"updatedAt\":\"2020-07-03T19:49:17.183+0530\",\"startDateType\":1,\"flagByUserId\":\"\",\"flag\":\"\",\"startDate_BC\":\"\",\"endDate\":\"\",\"endDate_BC\":\"\",\"isBC\":false,\"startDate\":\"1932\",\"score\":0,\"UserID\":\"IFvh9NBLezDQMw7slX5U\",\"UserName\":\"Reviewer\",\"createdAt\":\"2020-07-03T19:49:17.183+0530\",\"endDateType\":0,\"flagComment\":\"\",\"isCreatedByOther\":false},\"title\":\"Brave New World\",\"createdAt\":\"2020-07-03T19:47:26.817+0530\",\"updatedAt\":\"2020-07-03T19:49:17.183+0530\"},{\"id\":\"MnarJz2u5kVlxUMsVqEy\",\"date\":{\"derivedFromId\":\"\",\"UserID\":\"RVjUPKXTXEVo0ZyBpirm\",\"isCreatedByOther\":false,\"flag\":\"\",\"isBC\":false,\"score\":1,\"startDate_BC\":\"\",\"UserName\":\"ExampleNotes\",\"flagComment\":\"\",\"isBan\":false,\"flagByUserName\":\"\",\"endDate\":\"\",\"startDateType\":1,\"endDateType\":0,\"endDate_BC\":\"\",\"flagByUserId\":\"\",\"updatedAt\":\"2020-07-03T19:49:17.884+0530\",\"startDate\":\"1932\",\"createdAt\":\"2020-07-03T19:49:17.884+0530\"},\"updatedAt\":\"2020-07-03T19:49:17.884+0530\",\"createdAt\":\"2020-07-03T19:44:19.123+0530\",\"title\":\"Brave New World\",\"userId\":\"RVjUPKXTXEVo0ZyBpirm\",\"filter\":{},\"userName\":\"ExampleNotes\"}]"
+
+            function injectData(injectedData = null) {
+                inputData = injectedData
+            }
+            var parsedData = JSON.parse(inputData);
+            var data = [];
+            parsedData.forEach(element => {
+                if (element.date.startDate || element.date.startDate_BC) {
+                    var startDate = element.date.startDate || element.date.startDate_BC;
+                    var startDateParts = startDate.split('-');
+                    var dateObject;
+                    switch(startDateParts.length) {
+                        case 3:
+                            dateObject = new Date(startDateParts[2], startDateParts[1]-1, startDateParts[0]);
+                            break;
+                        case 2:
+                            dateObject = new Date(startDateParts[1], startDateParts[0]-1);
+                            break;
+                        default:
+                            dateObject = new Date(startDateParts[0]);
+                    }
+                    data.push({
+                        'start': dateObject,
+                        'content': element.title
+                    });
+                }
+            });
+            
             google.load("visualization", "1");
     
             // Set callback to run when API is loaded
@@ -21,47 +68,59 @@
     
             // Called when the Visualization API is loaded.
             function drawVisualization() {
-                // Create and populate a data table.
-                var data = new google.visualization.DataTable();
-                data.addColumn('datetime', 'start');
-                data.addColumn('datetime', 'end');
-                data.addColumn('string', 'content');
-    
-                data.addRows([
-                    [new Date(2010,7,23), , 'Conversation<br>'],
-                    [new Date(2010,7,23,23,0,0), , 'Mail from boss<br>'],
-                    [new Date(2010,7,24,16,0,0), , 'Report'],
-                    [new Date(2010,7,26), new Date(2010,8,2), 'Traject A'],
-                    [new Date(2010,7,28), , 'Memo<br>'],
-                    [new Date(2010,7,29), , 'Phone call<br>'],
-                    [new Date(2010,7,31), new Date(2010,8,3), 'Traject B'],
-                    [new Date(2010,8,4,12,0,0), , 'Report<br>']
-                ]);
     
                 // specify options
                 var options = {
-                    "width":  "100%",
-                    "height": "300px",
-                    "style": "box"
+                    width:  "100%",
+                    height: "90%",
+                    layout: "box",
+                    // eventMargin: 10,
+                    // eventMarginAxis: 10,
+                    style: "dot",
+                    //cluster: true,
+                    max: new Date(endRange,11,31),
+                    min: new Date(-271820, 0, 1),
+                    autoResize: true
                 };
     
                 // Instantiate our timeline object.
                 timeline = new links.Timeline(document.getElementById('mytimeline'), options);
-    
                 // Draw our timeline with the created data and options
                 timeline.draw(data);
+                startRange = defaultEra;
+                timeline.setVisibleChartRange(startRange, endRange);
             }
+            window.onload = function(){ 
+                document.getElementById("out").onclick = function(){
+                    if (currentIndex <= 5) {
+                        var newIndex = currentIndex + 1;
+                        timeline.setVisibleChartRange(fullRange[newIndex], endRange);
+                        currentIndex = newIndex;
+                    }                    
+                }
+                document.getElementById("in").onclick = function(){
+                    if (currentIndex) {
+                        var newIndex = currentIndex - 1;
+                        timeline.setVisibleChartRange(fullRange[newIndex], endRange);
+                        currentIndex = newIndex;
+                    }
+                }
+            };            
         </script>
     </head>
     
     <body>
-    <div id="mytimeline"></div>
+        <div>
+            <div id="mytimeline"></div>
+            <div id="bottomDiv" style="display: flex;
+            justify-content: space-around;
+            padding-top: 2%;">
+                <div class="out-box"><a href="javascript:void(0)" id="out">Out</a></div>
+                <div id="filter" class="filter-box">Filter</div>
+                <div id="in" class="in-box"><a href="javascript:void(0)">In</a></div>
+            </div>
+        </div>
     
-    <!-- Information about where the used icons come from -->
-    <p style="color:gray; font-size:10px; font-style:italic;">
-        Icons by <a href="https://dryicons.com" target="_blank" title="Aesthetica 2 Icons by DryIcons" style="color:gray;" >DryIcons</a>
-        and <a href="https://www.tpdkdesign.net" target="_blank" title="Refresh Cl Icons by TpdkDesign.net" style="color:gray;" >TpdkDesign.net</a>
-    </p>
     
     </body>
     </html>
