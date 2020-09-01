@@ -102,7 +102,7 @@
                 timeline.setVisibleChartRange(startRange, endRange);
             }
             function passNoteToApp(noteTitle) {
-                window.webkit.messageHandlers.notesDataHandler.postMessage({title: noteTitle})
+                window.webkit.messageHandlers.notesDataHandler.postMessage({title: "test title"})
             }
             window.onload = function(){
                 document.getElementById("filter").onclick = function(){
