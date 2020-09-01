@@ -85,12 +85,13 @@ div.timeline-event-box {
 
 div.timeline-event-dot {
     border-radius: 100%;
-    border-style: solid;
-    /* border-width: 5px; */
-    height: 10px !important;
-    width: 10px !important;
+    border: 2px solid white;
+    height: 15px !important;
+    width: 15px !important;
     background-color: #ffc200;
-    border: 0 !important;
+    position: initial !important;
+    display: flex;
+    z-index: 9999;
 }
 
 div.timeline-event-range {
@@ -121,13 +122,20 @@ div.timeline-event-content {
     white-space: nowrap;
     font-family: -apple-system, system-ui, BlinkMacSystemFont;
     position: relative;
-    margin-left: -50px !important;
-    /* margin-top: -20px !important; */
+    margin-left: -45% !important;
+    width: 95% !important;
 }
 
-/* div.timeline-event-dot-container div.timeline-event-content {
-    margin-top: -20px;
-} */
+div.timeline-event-content a {
+    text-decoration: none;
+}
+
+div.timeline-event-dot-container {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    background: transparent;
+}
 /* .timeline-event-dot-container .timeline-event-content {
     margin-left: -51px;
     margin-top: -20px;
@@ -218,4 +226,26 @@ div.timeline-navigation-move-right {
 /* separator between new and navigation buttons */
 div.timeline-navigation-new-line {
     border-right: 1px solid #bebebe;
+}
+
+.out-box a {
+    display: block;
+}
+.bottom-col img {
+    width: 40px
+}
+.bottom-col {
+    flex-basis: 33.33%;
+    max-width: 33.33%;
+    text-align: center;
+    min-height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.bottom-col:first-child {
+    border-right: 1px solid #BEBEBE;
+}
+.bottom-col:last-child {
+    border-left: 1px solid #BEBEBE;
 }
