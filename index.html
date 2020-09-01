@@ -61,7 +61,7 @@
                             if (dateObject != '') {
                                 data.push({
                                     'start': dateObject,
-                                    'content': `<a href="javascript:(0)" data class="note-content" onclick="passNoteToApp( '${element.userId}', '${element.title}')"><div style="background-color: white;padding: 6px;border-radius: 6px;color:black; box-shadow: 0 0 11px #ccc;">${element.title}</div></a>`
+                                    'content': `<a href="javascript:(0)" data class="note-content" onclick="passNoteToApp('${element.title}')"><div style="background-color: white;padding: 6px;border-radius: 6px;color:black; box-shadow: 0 0 11px #ccc;">${element.title}</div></a>`
                                 });                                
                             }
                         }
@@ -101,8 +101,8 @@
                 startRange = defaultEra;
                 timeline.setVisibleChartRange(startRange, endRange);
             }
-            function passNoteToApp(userId, title) {
-                window.webkit.messageHandlers.notesDataHandler.postMessage({title: title, userId: userId})
+            function passNoteToApp(noteTitle) {
+                window.webkit.messageHandlers.notesDataHandler.postMessage({title: noteTitle})
             }
             window.onload = function(){
                 document.getElementById("filter").onclick = function(){
@@ -132,17 +132,17 @@
             <div id="bottomDiv" style="display: flex; border: 1px solid #BEBEBE; border-top: none; min-height: 50px; align-items: center;">
                 <div class="out-box bottom-col">
                     <a href="javascript:void(0)" id="out">
-                        <img src="img/ZOOM_ICON_OUT.png">
+                        <img src="img/ZOOM_ICON_OUT.png" class="icons">
                     </a>
                 </div>
                 <div class="filter-box bottom-col">
                     <a href="javascript:void(0)" id="filter">
-                        <img src="img/FILTER_ICON_dark.png">
+                        <img src="img/FILTER_ICON_dark.png" class="icons">
                     </a>
                 </div>
                 <div class="in-box bottom-col">
                     <a href="javascript:void(0)" id="in">
-                        <img src="img/ZOOM_ICON_IN.png">
+                        <img src="img/ZOOM_ICON_IN.png" class="icons">
                     </a>
                 </div>
             </div>
