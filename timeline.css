@@ -54,9 +54,9 @@ div.timeline-axis-text-major {
 div.timeline-event {
     -moz-box-sizing: border-box;
     background-color: white;
-    border-color: #FEBB3B;
+    border-color: #FFF;
     box-sizing: border-box;
-    color: #1a1a1a;
+    color: #4d4d4d;
     display: inline-block;
 }
 
@@ -84,10 +84,13 @@ div.timeline-event-box {
 }
 
 div.timeline-event-dot {
-    -moz-border-radius: 5px; /* For Firefox 3.6 and older */
-    border-radius: 5px;
+    border-radius: 100%;
     border-style: solid;
-    border-width: 5px;
+    /* border-width: 5px; */
+    height: 10px !important;
+    width: 10px !important;
+    background-color: #ffc200;
+    border: 0 !important;
 }
 
 div.timeline-event-range {
@@ -109,16 +112,41 @@ div.timeline-event-range-drag-right {
 
 div.timeline-event-line {
     -moz-box-sizing: border-box;
-    border-left-style: solid;
-    border-left-width: 1px;
+    border: 0;
     box-sizing: border-box;
 }
 
 div.timeline-event-content {
     margin: 5px;
-    overflow: hidden;
     white-space: nowrap;
     font-family: -apple-system, system-ui, BlinkMacSystemFont;
+    position: relative;
+    margin-left: -50px !important;
+    /* margin-top: -20px !important; */
+}
+
+/* div.timeline-event-dot-container div.timeline-event-content {
+    margin-top: -20px;
+} */
+/* .timeline-event-dot-container .timeline-event-content {
+    margin-left: -51px;
+    margin-top: -20px;
+} */
+div.timeline-event-content::after {
+    position: absolute;
+    content: "";
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 10px 8.5px 0 7.5px;
+    border-color: #ffffff transparent transparent transparent;
+    line-height: 0px;
+    _border-color: #ffffff #000000 #000000 #000000;
+    _filter: progid:DXImageTransform.Microsoft.Chroma(color='#000000');
+    bottom: -10px;
+    left: 50%;
+    z-index: 999;
+    margin-left: -5px;
 }
 
 div.timeline-groups-axis {
