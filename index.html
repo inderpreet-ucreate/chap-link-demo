@@ -61,7 +61,7 @@
                             if (dateObject != '') {
                                 data.push({
                                     'start': dateObject,
-                                    'content': '<div style="background-color: white;padding: 6px;border-radius: 6px;">' + element.title + '</div>'
+                                    'content': `<a href="javascript:(0)" data class="note-content" onclick="passNoteToApp( '${element.userId}', '${element.title}')"><div style="background-color: white;padding: 6px;border-radius: 6px;color:black;">${element.title}</div></a>`
                                 });                                
                             }
                         }
@@ -105,12 +105,11 @@
                 startRange = defaultEra;
                 timeline.setVisibleChartRange(startRange, endRange);
             }
+            function passNoteToApp(userId, title) {
+                window.webkit.messageHandlers.notesDataHandler.postMessage({title: title, userId: userId})
+            }
             window.onload = function(){
                 injectData(ddData);
-                document.getElementById("filter").onclick = function(){
-                    window.webkit.messageHandlers.doStuffMessageHandler.postMessage({param1: 'stuff', param2: '1000'})
-                }
-
                 document.getElementById("out").onclick = function(){
                     if (currentIndex <= 5) {
                         var newIndex = currentIndex + 1;
