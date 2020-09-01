@@ -106,6 +106,10 @@
                 timeline.setVisibleChartRange(startRange, endRange);
             }
             window.onload = function(){
+                document.getElementById("filter").onclick = function(){
+                    window.webkit.messageHandlers.doStuffMessageHandler.postMessage({param1: 'stuff', param2: '1000'})
+                }
+
                 document.getElementById("out").onclick = function(){
                     if (currentIndex <= 5) {
                         var newIndex = currentIndex + 1;
@@ -131,8 +135,8 @@
             justify-content: space-around;
             padding-top: 2%;">
                 <div class="out-box"><a href="javascript:void(0)" id="out">Out</a></div>
-                <div id="filter" class="filter-box">Filter</div>
-                <div id="in" class="in-box"><a href="javascript:void(0)">In</a></div>
+                <div class="filter-box"><a href="javascript:void(0)" id="filter">Filter</a></div>
+                <div class="in-box"><a href="javascript:void(0)" id="in">In</a></div>
             </div>
         </div>
     
