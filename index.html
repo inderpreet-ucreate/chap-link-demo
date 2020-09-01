@@ -86,7 +86,7 @@
                     layout: "box",
                     // eventMargin: 10,
                     // eventMarginAxis: 10,
-                    style: "dot",
+                    style: "box",
                     //cluster: true,
                     min: new Date(-271820, 0, 1),
                     autoResize: true
@@ -106,6 +106,7 @@
                 timeline.setVisibleChartRange(startRange, endRange);
             }
             window.onload = function(){
+                injectData(ddData);
                 document.getElementById("filter").onclick = function(){
                     window.webkit.messageHandlers.doStuffMessageHandler.postMessage({param1: 'stuff', param2: '1000'})
                 }
@@ -130,7 +131,7 @@
     
     <body>
         <div>
-            <div id="mytimeline"></div>
+            <div id="mytimeline" style="background-color: #F9F5EB"></div>
             <div id="bottomDiv" style="display: flex;
             justify-content: space-around;
             padding-top: 2%;">

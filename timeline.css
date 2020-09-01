@@ -4,11 +4,16 @@ div.timeline-frame {
     box-sizing: border-box;
     overflow: hidden;
     position: relative;
+    background-color: #F9F5EB;
 }
 
 div.timeline-content {
     overflow: hidden;
     position: relative;
+}
+
+.timeline-content {
+    background-color: #F9F5EB;
 }
 
 div.timeline-axis {
@@ -48,7 +53,7 @@ div.timeline-axis-text-major {
 
 div.timeline-event {
     -moz-box-sizing: border-box;
-    background-color: #d5ddf6;
+    background-color: white;
     border-color: #FEBB3B;
     box-sizing: border-box;
     color: #1a1a1a;
@@ -113,6 +118,7 @@ div.timeline-event-content {
     margin: 5px;
     overflow: hidden;
     white-space: nowrap;
+    font-family: -apple-system, system-ui, BlinkMacSystemFont;
 }
 
 div.timeline-groups-axis {
