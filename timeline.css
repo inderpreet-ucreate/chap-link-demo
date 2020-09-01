@@ -242,6 +242,7 @@ div.timeline-navigation-new-line {
     display: flex;
     align-items: center;
     justify-content: center;
+    background-color: #F7F7F7;
 }
 .bottom-col:first-child {
     border-right: 1px solid #BEBEBE;
