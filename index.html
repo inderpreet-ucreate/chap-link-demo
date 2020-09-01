@@ -109,7 +109,9 @@
                 window.webkit.messageHandlers.notesDataHandler.postMessage({title: title, userId: userId})
             }
             window.onload = function(){
-                injectData(ddData);
+                document.getElementById("filter").onclick = function(){
+                    window.webkit.messageHandlers.filterHandler.postMessage({filterClicked: true})
+                }
                 document.getElementById("out").onclick = function(){
                     if (currentIndex <= 5) {
                         var newIndex = currentIndex + 1;
