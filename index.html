@@ -46,6 +46,7 @@
                     parsedData.forEach(element => {
                         var dateObject = '';
                         if (element.filter.sortBy_Timeline) {
+                            console.log('if');
                             if (element.date.startDate || element.date.startDate_BC) {
                                 var startDate = element.date.startDate || element.date.startDate_BC;
                                 var startDateParts = startDate.split('-');                            
@@ -66,10 +67,12 @@
                                 }
                             }                            
                         } else {
+                            console.log('else');
                             var createdDate = new Date(element.createdAt);
                             dateObject = new Date(createdDate.getFullYear(), createdDate.getMonth(), createdDate.getDate())
                         }
                         if (dateObject != '') {
+                            console.log(dateObject);
                             data.push({
                                 'start': dateObject,
                                 'content': `<a href="javascript:(0)" data class="note-content" onclick="passNoteToApp('${element.title}')"><div style="background-color: white;padding: 6px;border-radius: 6px;color:black; box-shadow: 0 0 11px #ccc; z-index: 9999999;">${element.title}</div></a>`
