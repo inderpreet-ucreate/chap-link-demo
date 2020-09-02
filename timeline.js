@@ -6794,15 +6794,15 @@ links.Timeline.stopPropagation = function (event) {
  * Cancels the event if it is cancelable, without stopping further propagation of the event.
  */
 links.Timeline.preventDefault = function (event) {
-    if (!event)
-        event = window.event;
+    // if (!event)
+    //     event = window.event;
 
-    if (event.preventDefault) {
-        event.preventDefault();  // non-IE browsers
-    }
-    else {
-        event.returnValue = false;  // IE browsers
-    }
+    // if (event.preventDefault) {
+    //     event.preventDefault();  // non-IE browsers
+    // }
+    // else {
+    //     event.returnValue = false;  // IE browsers
+    // }
 };
 
 
