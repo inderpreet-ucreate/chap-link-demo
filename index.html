@@ -115,7 +115,6 @@
                 window.webkit.messageHandlers.notesDataHandler.postMessage({title: noteTitle})
             }
             window.onload = function(){
-                injectData(ddData);
                 document.getElementById("filter").onclick = function(){
                     window.webkit.messageHandlers.filterHandler.postMessage({filterClicked: true})
                 }
