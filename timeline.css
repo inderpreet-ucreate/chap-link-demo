@@ -1,3 +1,5 @@
+html, body {margin: 0; height: 100%; overflow: hidden}
+
 div.timeline-frame {
     -moz-box-sizing: border-box;
     border: 1px solid #bebebe;
@@ -250,3 +252,5 @@ div.timeline-navigation-new-line {
 .bottom-col:last-child {
     border-left: 1px solid #BEBEBE;
 }
+
+.icons 
