@@ -61,7 +61,7 @@
                             if (dateObject != '') {
                                 data.push({
                                     'start': dateObject,
-                                    'content': `<a href="javascript:(0)" data class="note-content" onclick="passNoteToApp('${element.title}')"><div style="background-color: white;padding: 6px;border-radius: 6px;color:black; box-shadow: 0 0 11px #ccc;">${element.title}</div></a>`
+                                    'content': `<a href="javascript:(0)" data class="note-content" onclick="passNoteToApp('${element.title}')"><div style="background-color: white;padding: 6px;border-radius: 6px;color:black; box-shadow: 0 0 11px #ccc; z-index: 9999;">${element.title}</div></a>`
                                 });                                
                             }
                         }
