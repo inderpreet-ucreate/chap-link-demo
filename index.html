@@ -45,24 +45,26 @@
                 if (parsedData.length) {
                     parsedData.forEach(element => {
                         var dateObject = '';
-                        if ((element.date.startDate || element.date.startDate_BC) && element.filter.sortBy_Timeline) {
-                            var startDate = element.date.startDate || element.date.startDate_BC;
-                            var startDateParts = startDate.split('-');                            
-                            switch(startDateParts.length) {
-                                case 3:
-                                    dateObject = new Date(startDateParts[2], startDateParts[1]-1, startDateParts[0]);
-                                    break;
-                                case 2:
-                                    dateObject = new Date(startDateParts[1], startDateParts[0]-1);
-                                    break;
-                                default:
-                                    if (element.date.isBC) {
-                                        var yearOnly = -(startDateParts[0] - 1);
-                                    } else {
-                                        var yearOnly = startDateParts[0];
-                                    }
-                                    dateObject = new Date(yearOnly, 0);
-                            }
+                        if (element.filter.sortBy_Timeline) {
+                            if (element.date.startDate || element.date.startDate_BC) {
+                                var startDate = element.date.startDate || element.date.startDate_BC;
+                                var startDateParts = startDate.split('-');                            
+                                switch(startDateParts.length) {
+                                    case 3:
+                                        dateObject = new Date(startDateParts[2], startDateParts[1]-1, startDateParts[0]);
+                                        break;
+                                    case 2:
+                                        dateObject = new Date(startDateParts[1], startDateParts[0]-1);
+                                        break;
+                                    default:
+                                        if (element.date.isBC) {
+                                            var yearOnly = -(startDateParts[0] - 1);
+                                        } else {
+                                            var yearOnly = startDateParts[0];
+                                        }
+                                        dateObject = new Date(yearOnly, 0);
+                                }
+                            }                            
                         } else {
                             dateObject = new Date(element.createdAt)
                         }
@@ -140,17 +142,17 @@
             <div id="bottomDiv" style="display: flex; border: 1px solid #BEBEBE; border-top: none; min-height: 50px; align-items: center;">
                 <div class="out-box bottom-col">
                     <a href="javascript:void(0)" id="out">
-                        <img src="img/ZOOM_ICON_OUT.png" class="icons">
+                        <img src="img/ZOOM_ICON_OUT_2.png" class="icons">
                     </a>
                 </div>
                 <div class="filter-box bottom-col">
                     <a href="javascript:void(0)" id="filter">
-                        <img src="img/FILTER_ICON_dark.png" class="icons">
+                        <img src="img/FILTER_ICON.png" class="icons">
                     </a>
                 </div>
                 <div class="in-box bottom-col">
                     <a href="javascript:void(0)" id="in">
-                        <img src="img/ZOOM_ICON_IN.png" class="icons">
+                        <img src="img/ZOOM_ICON_IN_2.png" class="icons">
                     </a>
                 </div>
             </div>
