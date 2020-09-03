@@ -55,7 +55,6 @@
                     parsedData.forEach(element => {
                         var dateObject = '';
                         if (element.filter.sortBy_Timeline) {
-                            console.log('if');
                             if (element.date.startDate || element.date.startDate_BC) {
                                 var startDate = element.date.startDate || element.date.startDate_BC;
                                 var startDateParts = startDate.split('-');
@@ -76,7 +75,6 @@
                                 }
                             }                            
                         } else {
-                            console.log('else');
                             var startDateParts = element.createdAt.split('-');
                             dateObject = new Date(startDateParts[2], startDateParts[1]-1, startDateParts[0]);
                         }
@@ -126,7 +124,6 @@
                 window.webkit.messageHandlers.notesDataHandler.postMessage({title: noteTitle})
             }
             window.onload = function(){
-                injectData(ddData);
                 document.getElementById("filter").onclick = function(){
                     window.webkit.messageHandlers.filterHandler.postMessage({filterClicked: true})
                 }
