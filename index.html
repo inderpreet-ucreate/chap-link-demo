@@ -93,7 +93,7 @@
                 // specify options
                 var options = {
                     width:  "100%",
-                    height: "90%",
+                    height: "85%",
                     style: "dot",
                     min: new Date(-271820, 0, 1),
                     autoResize: true
@@ -116,6 +116,7 @@
                 window.webkit.messageHandlers.notesDataHandler.postMessage({title: noteTitle})
             }
             window.onload = function(){
+                injectData(ddData);
                 document.getElementById("filter").onclick = function(){
                     window.webkit.messageHandlers.filterHandler.postMessage({filterClicked: true})
                 }
