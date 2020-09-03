@@ -14,23 +14,31 @@
     
         <script type="text/javascript">
             var currentTime = new Date();
+            var firstDayOfMonth = new Date(currentTime.getFullYear(), currentTime.getMonth(), 1).toLocaleString().split(',')[0];
+            var firstDayOfMonthSplitted = firstDayOfMonth.split('/');
+            var lastDayOfMonth = new Date(currentTime.getFullYear(), currentTime.getMonth() + 1, 0).toLocaleString().split(',')[0];
+            var lastDayOfMonthSplitted = lastDayOfMonth.split('/');
             var currentYear = currentTime.getFullYear();
             var tenYearPast = (currentYear-10).toString();
             var endRange = (currentYear+5).toString();
             var defaultEra = new Date(1900, 0, 1);
             var timeline;
-            var fullRange = [tenYearPast,
-                defaultEra,
-                new Date(1400, 0, 1),
-                '0000',
-                new Date(-3000, 0, 1),
-                new Date(-200000, 0, 1),
-                new Date(-271820, 0, 1)
+            var fullRange = [
+                {start: new Date(firstDayOfMonthSplitted[2], firstDayOfMonthSplitted[1]-1, firstDayOfMonthSplitted[0]),
+                    end: new Date(lastDayOfMonthSplitted[2], lastDayOfMonthSplitted[1]-1, lastDayOfMonthSplitted[0]),},
+                {start: new Date(currentYear, 0, 1), end: new Date(currentYear, 11, 31)},
+                {start: new Date(tenYearPast, 0, 1), end: new Date(currentYear, 11, 31)},
+                {start: defaultEra, end: new Date(currentYear, 11, 31)},
+                {start: new Date(1400, 0, 1), end: new Date(currentYear, 11, 31)},
+                {start: '0000', end: new Date(currentYear, 11, 31)},
+                {start: new Date(-3000, 0, 1), end: new Date(currentYear, 11, 31)},
+                {start: new Date(-200000, 0, 1), end: new Date(currentYear, 11, 31)},
+                {start: new Date(-271820, 0, 1), end: new Date(currentYear, 11, 31)}
                 // new Date(-3000000000, 0, 1),
                 // new Date(-4550000000, 0, 1),
                 // new Date(-13800000000, 0, 1)
                 ];
-            var currentIndex = 1;
+            var currentIndex = 3;
             var startRange;
             var data;
             
@@ -121,16 +129,16 @@
                     window.webkit.messageHandlers.filterHandler.postMessage({filterClicked: true})
                 }
                 document.getElementById("out").onclick = function(){
-                    if (currentIndex <= 5) {
+                    if (currentIndex <= 7) {
                         var newIndex = currentIndex + 1;
-                        timeline.setVisibleChartRange(fullRange[newIndex], endRange);
+                        timeline.setVisibleChartRange(fullRange[newIndex].start, fullRange[newIndex].end);
                         currentIndex = newIndex;
                     }                    
                 }
                 document.getElementById("in").onclick = function(){
                     if (currentIndex) {
                         var newIndex = currentIndex - 1;
-                        timeline.setVisibleChartRange(fullRange[newIndex], endRange);
+                        timeline.setVisibleChartRange(fullRange[newIndex].start, fullRange[newIndex].end);
                         currentIndex = newIndex;
                     }
                 }
