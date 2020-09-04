@@ -103,6 +103,8 @@
                     width:  "100%",
                     height: "84.7%",
                     style: "dot",
+                    eventMargin: -5,
+                    eventMarginAxis: 0,
                     min: new Date(-265500, 0, 1),
                     autoResize: true
                 };
@@ -124,7 +126,7 @@
                 window.webkit.messageHandlers.notesDataHandler.postMessage({title: noteTitle})
             }
             window.onload = function(){
-                // injectData(ddData);
+                injectData(ddData);
                 document.getElementById("filter").onclick = function(){
                     window.webkit.messageHandlers.filterHandler.postMessage({filterClicked: true})
                 }
@@ -148,23 +150,23 @@
     </head>
     
     <body>
-        <div>
+        <div class="disableselect">
             <div id="mytimeline" style="background-color: #F9F5EB; box-sizing: border-box;
             padding-top: 1%;"></div>
             <div id="bottomDiv" style="display: flex; border: 1px solid #BEBEBE; border-top: none; min-height: 44px; align-items: center;">
                 <div class="out-box bottom-col">
                     <a href="javascript:void(0)" id="out">
-                        <img src="img/ZOOM_ICON_OUT_2.png" class="icons">
+                        <img src="img/ZOOM_ICON_OUT_2.svg" class="icons">
                     </a>
                 </div>
                 <div class="filter-box bottom-col">
                     <a href="javascript:void(0)" id="filter">
-                        <img src="img/FILTER_ICON.png" class="icons">
+                        <img src="img/FILTER_ICON.svg" class="icons">
                     </a>
                 </div>
                 <div class="in-box bottom-col">
                     <a href="javascript:void(0)" id="in">
-                        <img src="img/ZOOM_ICON_IN_2.png" class="icons">
+                        <img src="img/ZOOM_ICON_IN_2.svg" class="icons">
                     </a>
                 </div>
             </div>
