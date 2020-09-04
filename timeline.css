@@ -233,18 +233,19 @@ div.timeline-navigation-new-line {
 .out-box a {
     display: block;
 }
-.bottom-col img {
-    width: 40px
-}
+
 .bottom-col {
     flex-basis: 33.33%;
     max-width: 33.33%;
     text-align: center;
-    min-height: 50px;
+    min-height: 44px;
     display: flex;
     align-items: center;
     justify-content: center;
     background-color: #F7F7F7;
+}
+.bottom-col img {
+    width: 24px;
 }
 .bottom-col:first-child {
     border-right: 1px solid #BEBEBE;
@@ -252,3 +253,15 @@ div.timeline-navigation-new-line {
 .bottom-col:last-child {
     border-left: 1px solid #BEBEBE;
 }
+
+/* @media screen and (max-width : 375px) {
+    .bottom-col img {
+        width: 32px;
+    }
+}
+
+@media screen and (min-width : 377px) {
+    .bottom-col img {
+        width: 40px;
+    }
+} */
