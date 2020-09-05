@@ -53,14 +53,14 @@ div.timeline-axis-text-minor {
 div.timeline-axis-text-major {
 }
 
-/* div.timeline-event {
+div.timeline-event {
     -moz-box-sizing: border-box;
     background-color: white;
     border-color: #FFF;
     box-sizing: border-box;
     color: #4d4d4d;
     display: inline-block;
-} */
+}
 
 div.timeline-event-selected {
     background-color: #fff785;
@@ -77,21 +77,21 @@ div.timeline-event-cluster div.timeline-event-dot {
     border-color: #d5ddf6;
 }
 
-/* div.timeline-event-box {
-    -moz-border-radius: 5px;
+div.timeline-event-box {
+    -moz-border-radius: 5px; /* For Firefox 3.6 and older */
     border-radius: 5px;
     border-style: solid;
     border-width: 1px;
     text-align: center;
-} */
+}
 
 div.timeline-event-dot {
     border-radius: 100%;
     border: 2px solid white;
-    height: 12px !important;
-    width: 12px !important;
+    height: 15px !important;
+    width: 15px !important;
     background-color: #ffc200;
-    /* position: initial !important; */
+    position: initial !important;
     display: flex;
     z-index: 9999;
 }
@@ -124,8 +124,8 @@ div.timeline-event-content {
     white-space: nowrap;
     font-family: -apple-system, system-ui, BlinkMacSystemFont;
     position: relative;
-    /* margin-left: -45% !important;
-    width: 95% !important; */
+    margin-left: -45% !important;
+    width: 95% !important;
 }
 
 div.timeline-event-content a {
@@ -137,6 +137,26 @@ div.timeline-event-dot-container {
     justify-content: center;
     flex-direction: column;
     background: transparent;
+}
+/* .timeline-event-dot-container .timeline-event-content {
+    margin-left: -51px;
+    margin-top: -20px;
+} */
+div.timeline-event-content::after {
+    position: absolute;
+    content: "";
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 10px 8.5px 0 7.5px;
+    border-color: #ffffff transparent transparent transparent;
+    line-height: 0px;
+    _border-color: #ffffff #000000 #000000 #000000;
+    _filter: progid:DXImageTransform.Microsoft.Chroma(color='#000000');
+    bottom: -10px;
+    left: 50%;
+    z-index: 999;
+    margin-left: -5px;
 }
 
 div.timeline-groups-axis {

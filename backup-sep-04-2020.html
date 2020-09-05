@@ -20,20 +20,20 @@
             var lastDayOfMonthSplitted = lastDayOfMonth.split('/');
             var currentYear = currentTime.getFullYear();
             var tenYearPast = (currentYear-10).toString();
-            var endRange = (currentYear+60).toString();
+            var endRange = (currentYear+5).toString();
             var defaultEra = new Date(1900, 0, 1);
             var timeline;
             var fullRange = [
                 {start: new Date(firstDayOfMonthSplitted[2], firstDayOfMonthSplitted[1]-1, firstDayOfMonthSplitted[0]),
                     end: new Date(lastDayOfMonthSplitted[2], lastDayOfMonthSplitted[1]-1, lastDayOfMonthSplitted[0]),},
                 {start: new Date(currentYear, 0, 1), end: new Date(currentYear, 11, 31)},
-                {start: new Date(tenYearPast, 0, 1), end: new Date((currentYear+5).toString(), 11, 31)},
-                {start: defaultEra, end: new Date(endRange, 11, 31)},
-                {start: new Date(1400, 0, 1), end: new Date((currentYear+200).toString(), 11, 31)},
-                {start: '0000', end: new Date((currentYear+1000).toString(), 11, 31)},
-                {start: new Date(-3000, 0, 1), end: new Date((currentYear+2000).toString(), 11, 31)},
-                {start: new Date(-200000, 0, 1), end: new Date(endRange, 11, 31)},
-                {start: new Date(-264000, 0, 1), end: new Date(endRange, 11, 31)}
+                {start: new Date(tenYearPast, 0, 1), end: new Date(currentYear, 11, 31)},
+                {start: defaultEra, end: new Date(currentYear, 11, 31)},
+                {start: new Date(1400, 0, 1), end: new Date(currentYear, 11, 31)},
+                {start: '0000', end: new Date(currentYear, 11, 31)},
+                {start: new Date(-3000, 0, 1), end: new Date(currentYear, 11, 31)},
+                {start: new Date(-200000, 0, 1), end: new Date(currentYear, 11, 31)},
+                {start: new Date(-264000, 0, 1), end: new Date(currentYear, 11, 31)}
                 // new Date(-3000000000, 0, 1),
                 // new Date(-4550000000, 0, 1),
                 // new Date(-13800000000, 0, 1)
@@ -101,10 +101,10 @@
                 // specify options
                 var options = {
                     width:  "100%",
-                    height: "91.5%",
-                    style: "box",
-                    eventMargin: 0,
-                    eventMarginAxis: 10,
+                    height: "84.7%",
+                    style: "dot",
+                    eventMargin: -5,
+                    eventMarginAxis: 0,
                     min: new Date(-265500, 0, 1),
                     autoResize: true
                 };
@@ -126,7 +126,7 @@
                 window.webkit.messageHandlers.notesDataHandler.postMessage({title: noteTitle})
             }
             window.onload = function(){
-                // injectData(ddData);
+                injectData(ddData);
                 document.getElementById("filter").onclick = function(){
                     window.webkit.messageHandlers.filterHandler.postMessage({filterClicked: true})
                 }
@@ -152,7 +152,7 @@
     <body>
         <div class="disableselect">
             <div id="mytimeline" style="background-color: #F9F5EB;"></div>
-            <div id="bottomDiv" style="display: flex; border: 1px solid #BEBEBE; border-top: none; min-height: 28px; align-items: center;">
+            <div id="bottomDiv" style="display: flex; border: 1px solid #BEBEBE; border-top: none; min-height: 44px; align-items: center;">
                 <div class="out-box bottom-col">
                     <a href="javascript:void(0)" id="out">
                         <img src="img/ZOOM_ICON_OUT_2.svg" class="icons">
