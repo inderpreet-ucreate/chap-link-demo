@@ -113,10 +113,18 @@ div.timeline-event-range-drag-right {
     z-index: 1000;
 }
 
-div.timeline-event-line {
+/* div.timeline-event-line {
     -moz-box-sizing: border-box;
     border: 0;
     box-sizing: border-box;
+} */
+
+div.timeline-event-line {	
+    -moz-box-sizing: border-box;	
+    border-left-style: solid;	
+    border-left-width: 1px;	
+    box-sizing: border-box;	
+    border-color: gray;
 }
 
 div.timeline-event-content {
