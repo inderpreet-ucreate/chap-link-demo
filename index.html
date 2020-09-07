@@ -28,13 +28,13 @@
                     end: new Date(lastDayOfMonthSplitted[2], lastDayOfMonthSplitted[1]-1, lastDayOfMonthSplitted[0]),
                 eraName:'Month'},
                 {start: new Date(currentYear, 0, 1), end: new Date(currentYear, 11, 31), eraName:'Year'},
-                {start: new Date(tenYearPast, 0, 1), end: new Date((currentYear+3).toString(), 11, 31), eraName:'Decade'},
+                {start: new Date(tenYearPast, 0, 1), end: new Date((currentYear+1).toString(), 11, 31), eraName:'Decade'},
                 {start: defaultEra, end: new Date(endRange, 11, 31), eraName:'Century'},
-                {start: new Date(1400, 0, 1), end: new Date((currentYear+150).toString(), 11, 31), eraName:'Modern'},
-                {start: '0000', end: new Date((currentYear+600).toString(), 11, 31), eraName:'Middle'},
-                {start: new Date(-3000, 0, 1), end: new Date((currentYear+1500).toString(), 11, 31), eraName:'Classical'},
-                {start: new Date(-200000, 0, 1), end: new Date(endRange, 11, 31), eraName:'Humans'},
-                {start: new Date(-264000, 0, 1), end: new Date(endRange, 11, 31), eraName:'Mammals'}
+                {start: new Date(1400, 0, 1), end: new Date((currentYear+100).toString(), 11, 31), eraName:'Modern'},
+                {start: '0000', end: new Date((currentYear+300).toString(), 11, 31), eraName:'Middle'},
+                {start: new Date(-3000, 0, 1), end: new Date((currentYear+800).toString(), 11, 31), eraName:'Classical'},
+                {start: new Date(-200000, 0, 1), end: new Date(endRange, 11, 31), eraName:'Human'},
+                // {start: new Date(-264000, 0, 1), end: new Date(endRange, 11, 31), eraName:'Mammals'}
                 // new Date(-3000000000, 0, 1),
                 // new Date(-4550000000, 0, 1),
                 // new Date(-13800000000, 0, 1)
@@ -134,17 +134,18 @@
                 }
                 var eraBlock = document.getElementById("era_block");                
                 document.getElementById("out").onclick = function(){
-                    if (currentIndex <= 7) {
+                    if (currentIndex <= 6) {
                         var newIndex = currentIndex + 1;
                         timeline.setVisibleChartRange(fullRange[newIndex].start, fullRange[newIndex].end);
                         eraBlock.innerHTML = '<h1>' + fullRange[newIndex].eraName + '</h1>';
                         eraBlock.style.visibility = 'visible';
                         eraBlock.style.opacity = '1';
+                        eraBlock.style.marginLeft = -eraBlock.offsetWidth/2+'px';
                         currentIndex = newIndex;
                         setTimeout(function(){
                             eraBlock.style.visibility = 'hidden';
                             eraBlock.style.opacity = '0';
-                        }, 1000);
+                        }, 500);
                     }                    
                 }
                 document.getElementById("in").onclick = function(){
@@ -154,11 +155,12 @@
                         eraBlock.innerHTML = '<h1>' + fullRange[newIndex].eraName + '</h1>';
                         eraBlock.style.visibility = 'visible';
                         eraBlock.style.opacity = '1';
+                        eraBlock.style.marginLeft = -eraBlock.offsetWidth/2+'px';
                         currentIndex = newIndex;
                         setTimeout(function(){
                             eraBlock.style.visibility = 'hidden';
                             eraBlock.style.opacity = '0';
-                        }, 1000);
+                        }, 500);
                     }
                 }
             };

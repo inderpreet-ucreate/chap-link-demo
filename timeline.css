@@ -124,7 +124,7 @@ div.timeline-event-line {
     border-left-style: solid;	
     border-left-width: 1px;	
     box-sizing: border-box;	
-    border-color: gray;
+    border-color: #f5dfac;
 }
 
 div.timeline-event-content {
@@ -267,9 +267,11 @@ div.timeline-navigation-new-line {
 .era-name {
     position: absolute;
     top: 10%;
-    left: 45%;
-    transition: visibility 1s, opacity 0.5s linear;
+    left: 50%;
+    /* transition: visibility 1s, opacity 0.5s linear; */
     color: #013366;
     visibility: hidden;
     opacity: 0;
+    /* transform: translate(-32%); */
+    font-size: 32px;
 }
