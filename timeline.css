@@ -43,7 +43,7 @@ div.timeline-axis-grid-major {
 
 div.timeline-axis-text {
     color: #4d4d4d;
-    padding: 3px;
+    padding-top: 12px;
     white-space: nowrap;
 }
 
@@ -263,3 +263,13 @@ div.timeline-navigation-new-line {
         width: 40px;
     }
 } */
+
+.era-name {
+    position: absolute;
+    top: 10%;
+    left: 45%;
+    transition: visibility 1s, opacity 0.5s linear;
+    color: #013366;
+    visibility: hidden;
+    opacity: 0;
+}
