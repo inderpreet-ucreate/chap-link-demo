@@ -11,6 +11,7 @@
    args:
    - 'run'
    - 'deploy'
+   - '--allow-unauthenticated'
    - 'web-timeline'
    - '--image'
    - 'gcr.io/$PROJECT_ID/web-timeline:$COMMIT_SHA'
